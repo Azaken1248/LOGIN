@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'backdrop-desktop': "url('./src/assets/bg1.png')",
+        'backdrop-desktop': "url('/src/assets/bg1.png')",
       },
       backgroundPosition: {
         'top-adjust': 'center top 50%',
