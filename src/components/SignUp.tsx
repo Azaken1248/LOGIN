@@ -13,7 +13,7 @@ interface SignUpProps {
 const SignUp: React.FC<SignUpProps> = ({ setIsLogin }) => {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white rounded-[67px] shadow-lg p-8 w-full max-w-md md:w-[561px]">
+      <div className="bg-white rounded-tl-[180px] md:rounded-[67px] shadow-lg p-8 w-full max-w-md md:w-[561px] md:h-fit mx-0 md:mx-4 md:relative absolute bottom-0 left-0 right-0 md:bottom-auto flex flex-col justify-center md:h-[0vh]">
         <div className="flex justify-center mb-2">
           <img src={Logo} alt="CodeChef VIT Chennai Chapter" className="h-32" />
         </div>

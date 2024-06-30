@@ -9,7 +9,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white rounded-[67px] shadow-lg p-8 w-full max-w-md md:w-[561px] md:h-[555px]">
+      <div className="bg-white rounded-tl-[180px] md:rounded-[67px] shadow-lg p-8 w-full max-w-md md:w-[561px] md:h-[555px] mx-0 md:mx-4 md:relative absolute bottom-0 left-0 right-0 md:bottom-auto flex flex-col justify-center h-[85vh]">
         <div className="flex justify-center mb-2">
           <img src={Logo} alt="CodeChef VIT Chennai Chapter" className="h-32" />
         </div>
@@ -78,9 +78,7 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
             </button>
           </div>
           <div className="flex justify-between items-center mt-3 ml-2 mr-2">
-            <p className="text-sm text-3x1 text-black">
-              Don’t have an account?
-            </p>
+            <p className="text-sm text-black">Don’t have an account?</p>
             <a
               href="#"
               className="font-medium text-custom-blue-darker hover:text-blue-500"
