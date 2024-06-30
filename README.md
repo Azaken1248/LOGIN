@@ -22,7 +22,7 @@ Here is how you can set it up
   <br> 
 - Clone or download this repository:
   ```sh
-  git clone https://github.com/Azaken1248/TODOAPP-week-1-Challange-.git
+  git clone https://github.com/Azaken1248/LOGIN
   ```
   Or
   <br>
