@@ -5,7 +5,6 @@ export default {
     extend: {
       backgroundImage: {
         'backdrop-desktop': "url('./src/assets/bg1.png')",
-        'backdrop-mobile': "url('./src/assets/bg2.png')",
       },
       backgroundPosition: {
         'top-adjust': 'center top 50%',
