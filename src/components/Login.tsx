@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logo.png";
 import { UserCircleIcon, LockClosedIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 
 interface LoginProps {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+      setSuccessMessage(response.data.message);
+      setErrorMessage(""); // Clear any previous error messages
+    } catch (error: any) {
+      setErrorMessage(error.response?.data?.error || "An error occurred");
+      setSuccessMessage(""); // Clear any previous success messages
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white rounded-tl-[180px] md:rounded-[67px] shadow-lg p-8 w-full max-w-md md:w-[561px] md:h-[555px] mx-0 md:mx-4 md:relative absolute bottom-0 left-0 right-0 md:bottom-auto flex flex-col justify-center h-[85vh]">
@@ -16,7 +38,7 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
         <h2 className="text-2xl text-custom-blue font-bold text-center mb-8">
           LOGIN
         </h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4 relative">
             <label className="block text-sm font-bold text-black">
               Email ID
@@ -30,6 +52,8 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                 name="email"
                 className="appearance-none block w-full pl-10 pr-3 py-2 border-2 border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="some.mail@university.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -46,6 +70,8 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
                 name="password"
                 className="appearance-none block w-full pl-10 pr-3 py-2 border-2 border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
@@ -91,6 +117,10 @@ const Login: React.FC<LoginProps> = ({ setIsLogin }) => {
             </a>
           </div>
         </form>
+        {successMessage && (
+          <p className="text-green-500 mt-4">{successMessage}</p>
+        )}
+        {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
       </div>
     </div>
   );
